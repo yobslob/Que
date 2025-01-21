@@ -1,4 +1,4 @@
-const spotifyApi = require("../utils/spotifyAuth");
+const { spotifyApi } = require("../utils/spotifyAuth");
 
 // Fetch the currently playing track
 const getCurrentTrack = async (req, res) => {

@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import { getCurrentTrack } from "../services/spotifyService";
 
 const Party = () => {
     const [currentSong, setCurrentSong] = useState(null);
 
     useEffect(() => {
-        const fetchCurrentSong = async () => {
+        const fetchCurrentTrack = async () => {
             try {
-                const response = await axios.get("http://localhost:5000/current-song");
-                setCurrentSong(response.data);
+                const response = await getCurrentTrack();
+                setCurrentSong(response.track);
             } catch (error) {
-                console.error("Error fetching current song:", error);
+                console.error("Error fetching current track:", error);
             }
         };
 
-        fetchCurrentSong();
+        fetchCurrentTrack();
     }, []);
 
     return (
@@ -22,7 +22,13 @@ const Party = () => {
             <h2>Now Playing</h2>
             {currentSong ? (
                 <div>
-                    <p><strong>{currentSong.name}</strong> by {currentSong.artist}</p>
+                    <p><strong>{currentSong.name}</strong> by {currentSong.artists}</p>
+                    <p>Album: {currentSong.album}</p>
+                    <img
+                        src={currentSong.albumArt}
+                        alt={currentSong.name}
+                        style={{ width: "200px", height: "200px", objectFit: "cover" }}
+                    />
                 </div>
             ) : (
                 <p>Loading current song...</p>
