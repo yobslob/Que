@@ -2,8 +2,6 @@ import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { io } from "socket.io-client";
 import Party from "../components/Party";
-import SongSuggestion from "../components/SongSuggestion";
-import VotingGraph from "../components/VotingGraph";
 
 const PartyRoom = () => {
     const location = useLocation();
