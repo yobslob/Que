@@ -1,0 +1,65 @@
+@import "tailwindcss";
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+  
+  .animate-fade-out {
+    animation: fadeOut 0.5s ease-out forwards;
+  }
+  
+  /* Custom toggle button styles */
+  .toggle-checkbox {
+    right: 0;
+    z-index: 5;
+    opacity: 0;
+  }
+  
+  .toggle-label {
+    display: block;
+    overflow: hidden;
+    cursor: pointer;
+    border: 0 solid #bbb;
+  }
+  
+  .toggle-checkbox:checked + .toggle-label {
+    background-color: #4f46e5;
+  }
+  
+  .toggle-checkbox:checked + .toggle-label:before {
+    right: 0px;
+  }
+  
+  .toggle-checkbox:not(:checked) + .toggle-label:before {
+    right: 20px;
+  }
+  
+  /* Fix for w-7/10 and w-3/10 since these aren't standard Tailwind classes */
+  .w-7\/10 {
+    width: 70%;
+  }
+  
+  .w-3\/10 {
+    width: 30%;
+  }
